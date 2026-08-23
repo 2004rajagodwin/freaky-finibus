@@ -40,10 +40,19 @@
         * {
           box-sizing: border-box;
         }
-
-        .nl-badge{
-          display: none !important;
-        }
+/* Hide Netlify "Powered by Netlify" Badge */
+[data-netlify-badge],
+.netlify-badge,
+.netlify-badge-container,
+[class*="netlify-badge"],
+[class*="NetlifyBadge"],
+[id*="netlify-badge"],
+iframe[src*="netlify"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
         a {
           color: rgb(210, 67, 8);
           text-decoration: none;
@@ -6430,40 +6439,43 @@
       </script>
 
 <script>
-  (function () {
-    function killBadge() {
-      // Regular DOM la irundha
-      document.querySelectorAll('.nl-badge, [class*="netlify-badge"], netlify-badge, #netlify-badge')
-        .forEach((el) => {
-          el.style.setProperty('display', 'none', 'important');
-          el.remove();
+(function () {
+    function removeNetlifyBadge() {
+        document.querySelectorAll('*').forEach(function (el) {
+            if (el.shadowRoot) {
+                el.shadowRoot.querySelectorAll('*').forEach(function (child) {
+                    const text = child.textContent?.trim();
+
+                    if (
+                        text === 'Powered by Netlify' ||
+                        text?.includes('Powered by Netlify')
+                    ) {
+                        child.remove();
+                    }
+                });
+            }
         });
 
-      // Shadow DOM kulla irundha (custom element wrapper)
-      document.querySelectorAll('*').forEach((el) => {
-        if (el.shadowRoot) {
-          el.shadowRoot
-            .querySelectorAll('.nl-badge, [class*="badge"]')
-            .forEach((n) => n.remove());
-        }
-      });
+        document.querySelectorAll(
+            '[data-netlify-badge], .netlify-badge, .netlify-badge-container, [class*="netlify-badge"], [id*="netlify-badge"]'
+        ).forEach(function (el) {
+            el.remove();
+        });
     }
 
-    // Page load aana odane oru murai run pannunga
-    killBadge();
+    removeNetlifyBadge();
 
-    // Netlify badge async-a late-inject aaguradhala,
-    // DOM mela edhavadhu change aana udane check pannurathukku observer vekkurom
-    const observer = new MutationObserver(() => killBadge());
+    const observer = new MutationObserver(removeNetlifyBadge);
+
     observer.observe(document.documentElement, {
-      childList: true,
-      subtree: true,
+        childList: true,
+        subtree: true
     });
 
-    // Safety net: konjam nera kalichi (5s) observer stop pannidalam,
-    // perf-ku extra load venam
-    setTimeout(() => observer.disconnect(), 5000);
-  })();
+    setTimeout(function () {
+        observer.disconnect();
+    }, 10000);
+})();
 </script>
 
     </body>
