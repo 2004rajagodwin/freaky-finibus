@@ -237,8 +237,29 @@
           display: none !important;
         }
 
+        /* ============================================================
+      LAPTOP / TABLET-LANDSCAPE SCALING WRAPPER
+      The desktop canvas is a fixed 1440px absolutely-positioned
+      layout. Below 1440px and above the 1024px mobile breakpoint
+      (i.e. the 992px / 1199px / 1200px laptop and tablet-landscape
+      range), this wrapper proportionally scales the exact same
+      desktop design down to fit the viewport instead of clipping
+      or forcing a horizontal scrollbar. JS (below) sets the
+      transform and this wrapper's height to match; mobile
+      (<=1024px) resets everything back to normal document flow.
+      ============================================================ */
+        #jov-port-scale-wrap {
+          width: 100%;
+          overflow: hidden;
+        }
+
         /* ============ RESPONSIVE: TABLET & MOBILE (<=1024px) ============ */
         @media (max-width: 1024px) {
+          #jov-port-scale-wrap {
+            width: 100% !important;
+            height: auto !important;
+            overflow: visible !important;
+          }
           #jov-port-canvas {
             width: 100% !important;
             height: auto !important;
@@ -246,6 +267,7 @@
             padding-bottom: 40px;
             display: flex !important;
             flex-direction: column !important;
+            transform: none !important;
           }
           .jov-port-nav-bar {
             order: 1 !important;
@@ -3995,6 +4017,7 @@
       </style>
     </head>
     <body>
+      <div id="jov-port-scale-wrap">
       <div id="jov-port-canvas" class="jov-port-s1">
         <!-- ══ HERO ══ -->
         <div class="jov-port-hero-wrap">
@@ -5580,10 +5603,56 @@
           >© 2026 Freaky Finibus. All rights reserved</span
         >
       </div>
+      </div>
 
       <script>
         (function () {
           gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+          /* ---------------- Laptop / tablet-landscape canvas scaling ----------------
+      The desktop design is a fixed 1440px absolutely-positioned
+      canvas. Below 1024px, dedicated mobile CSS takes over the
+      layout completely. But between 1025px and 1439px — laptop
+      and tablet-landscape widths such as 992px, 1199px, 1200px —
+      neither the fixed desktop canvas nor the mobile layout fits
+      cleanly on its own. This scales the exact same desktop design
+      down proportionally so it always fits the viewport width with
+      no horizontal scrollbar and no clipped content, without
+      changing a single pixel of the actual desktop layout itself.
+    ------------------------------------------------------------------ */
+          const DESKTOP_DESIGN_WIDTH = 1440;
+          const MOBILE_BREAKPOINT = 1024;
+
+          function updateDesktopScale() {
+            const canvas = document.getElementById("jov-port-canvas");
+            const wrap = document.getElementById("jov-port-scale-wrap");
+            if (!canvas || !wrap) return;
+
+            const vw = window.innerWidth;
+
+            if (vw > MOBILE_BREAKPOINT) {
+              const scale = Math.min(1, vw / DESKTOP_DESIGN_WIDTH);
+              canvas.style.transformOrigin = "top left";
+              canvas.style.transform = "scale(" + scale + ")";
+
+              const naturalHeight = parseFloat(
+                getComputedStyle(canvas).height,
+              );
+              wrap.style.height = naturalHeight * scale + "px";
+              wrap.style.overflow = "hidden";
+            } else {
+              canvas.style.transform = "none";
+              canvas.style.transformOrigin = "";
+              wrap.style.height = "";
+              wrap.style.overflow = "visible";
+            }
+          }
+
+          function initDesktopScale() {
+            updateDesktopScale();
+            window.addEventListener("resize", updateDesktopScale);
+            window.addEventListener("orientationchange", updateDesktopScale);
+          }
 
           /* ---------------- Mobile nav ---------------- */
           function initMobileNav() {
@@ -6233,6 +6302,7 @@
           }
 
           document.addEventListener("DOMContentLoaded", function () {
+            initDesktopScale();
             const closeMobileNav = initMobileNav();
             initSmoothScroll(closeMobileNav);
             initCounters();
@@ -6256,6 +6326,7 @@
             // AOS/GSAP set initial transforms, so give the browser a tick then
             // let ScrollTrigger + AOS re-measure positions.
             window.addEventListener("load", () => {
+              updateDesktopScale();
               ScrollTrigger.refresh();
               if (window.AOS) AOS.refreshHard();
             });
