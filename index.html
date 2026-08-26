@@ -1,4 +1,4 @@
-  <!doctype html>
+<!doctype html>
   <html lang="en">
     <head>
       <meta charset="utf-8" />
@@ -1038,7 +1038,8 @@
         .jov-port-s107,
         .jov-port-s109,
         .jov-port-s55,
-        .jov-port-s63 {
+        .jov-port-s63,
+        .jov-port-cf2-mediakit {
           position: relative;
           overflow: hidden;
         }
@@ -1054,7 +1055,8 @@
         .jov-port-s107::after,
         .jov-port-s109::after,
         .jov-port-s55::after,
-        .jov-port-s63::after {
+        .jov-port-s63::after,
+        .jov-port-cf2-mediakit::after {
           content: "";
           position: absolute;
           top: 0;
@@ -1084,7 +1086,8 @@
         .jov-port-s107:hover::after,
         .jov-port-s109:hover::after,
         .jov-port-s55:hover::after,
-        .jov-port-s63:hover::after {
+        .jov-port-s63:hover::after,
+        .jov-port-cf2-mediakit:hover::after {
           opacity: 1;
           animation: jov-port-btn-shine 950ms ease forwards;
         }
@@ -1230,7 +1233,7 @@
         .jov-port-s1 {
           position: relative;
           width: 1440px;
-          height: 7450px;
+          height: 7690px;
           margin: 0 auto;
           overflow: hidden;
           background: rgb(255, 255, 255);
@@ -2664,7 +2667,7 @@
         .jov-port-s142 {
           position: absolute;
           left: 0;
-          top: 6900px;
+          top: 7080px;
           width: 1440px;
           height: 264px;
           overflow: hidden;
@@ -2711,7 +2714,7 @@
         .jov-port-s145 {
           position: absolute;
           left: 479px;
-          top: 7236px;
+          top: 7490px;
           width: 483px;
           display: block;
           text-align: center;
@@ -3172,7 +3175,7 @@
 
           flex-direction: column;
 
-          gap: 8px;
+          gap: 12px;
 
           min-width: 0;
         }
@@ -3311,6 +3314,31 @@
         }
 
         /* =========================================================
+    SELECT (Campaign Type / Estimated Budget)
+  ========================================================= */
+
+        select.jov-port-cf2-input {
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='rgb(210,67,8)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+          background-repeat: no-repeat;
+          background-position: right 16px center;
+          background-size: 12px 8px;
+          padding-right: 42px;
+          cursor: pointer;
+        }
+
+        select.jov-port-cf2-input[data-placeholder="1"] {
+          color: rgba(20, 20, 20, 0.35);
+        }
+
+        select.jov-port-cf2-input option {
+          color: rgb(20, 20, 20);
+          background: #ffffff;
+        }
+
+        /* =========================================================
     SUBMIT BUTTON
   ========================================================= */
 
@@ -3321,7 +3349,7 @@
 
           margin-top: 8px;
 
-          width: 220px;
+          width: 260px;
 
           max-width: 100%;
 
@@ -3440,6 +3468,68 @@
           100% {
             left: 135%;
           }
+        }
+
+        /* =========================================================
+    MEDIA KIT DOWNLOAD BUTTON
+  ========================================================= */
+
+        .jov-port-cf2-mediakit {
+          position: relative;
+
+          overflow: hidden;
+
+          z-index: 2;
+
+          display: inline-flex;
+
+          align-items: center;
+
+          gap: 10px;
+
+          margin-top: 55px;
+
+          width: fit-content;
+
+          padding: 15px 22px;
+
+          border-radius: 12px;
+
+          border: none;
+
+          background: rgb(210, 67, 8);
+
+          cursor: pointer;
+
+          font-family: "Clash Display", sans-serif;
+
+          font-weight: 600;
+
+          font-size: 14.5px;
+
+          color: rgb(255, 255, 255);
+
+          transition:
+            background 260ms ease,
+            transform 240ms ease;
+        }
+
+        .jov-port-cf2-mediakit:hover {
+          background: rgb(255, 81, 47) !important;
+
+          transform: translateY(-2px);
+
+          color: rgb(255, 255, 255);
+        }
+
+        .jov-port-cf2-mediakit svg {
+          flex-shrink: 0;
+
+          transition: transform 240ms ease;
+        }
+
+        .jov-port-cf2-mediakit:hover svg {
+          transform: translateY(2px);
         }
 
         /* =========================================================
@@ -3701,6 +3791,12 @@
             line-height: 1.5;
           }
 
+          .jov-port-cf2-mediakit {
+            width: 100%;
+
+            justify-content: center;
+          }
+
           /* Form */
 
           .jov-port-cf2-form-panel {
@@ -3938,7 +4034,7 @@
 
           <div class="jov-port-hero-avatar-row jov-port-s9" data-jp="hero-avatar">
             <div class="jov-port-s10"></div>
-            <span class="jov-port-s11">816K+ Followers Across Platforms</span>
+            <span class="jov-port-s11">950K+ Followers Across Platforms</span>
           </div>
 
           <h1
@@ -3967,14 +4063,14 @@
             >
               <div class="jov-port-s17">
                 <div class="jov-port-s18">
-                  <div data-count="816" data-suffix="K+" class="jov-port-s19">
-                    816K+
+                  <div data-count="950" data-suffix="K+" class="jov-port-s19">
+                    950K+
                   </div>
                   <div class="jov-port-s20">Combined Followers</div>
                 </div>
                 <span class="jov-port-s21"
-                  >Reaching millions with viral videos, authentic humor, and
-                  engaging content.</span
+                  >TikTok: 616K · Instagram: 318K — reaching millions with
+                  viral videos, authentic humor, and engaging content.</span
                 >
               </div>
               <div class="jov-port-s22">
@@ -4110,7 +4206,7 @@
               <div class="jov-port-s45"></div>
               <span class="jov-port-s46"
                 >I'm Freaky Finibus, a comedy creator turning everyday moments
-                into viral entertainment. With 816K+ followers across TikTok and
+                into viral entertainment. With 950K+ followers across TikTok and
                 Instagram, I create relatable, engaging content and partner with
                 brands to deliver authentic campaigns with real reach and
                 impact.</span
@@ -4126,7 +4222,7 @@
                 <div class="jov-port-s50">Monthly Views</div>
               </div>
               <div class="jov-port-mtc-stat jov-port-s48">
-                <div class="jov-port-mtc-stat-value jov-port-s49">816K+</div>
+                <div class="jov-port-mtc-stat-value jov-port-s49">950K+</div>
                 <div class="jov-port-s50">Combined Followers</div>
               </div>
             </div>
@@ -4891,7 +4987,7 @@
                   </p>
 
                   <div class="jov-port-cf2-info-list">
-                    <!-- <div class="jov-port-cf2-info-item">
+                    <div class="jov-port-cf2-info-item">
                       <div class="jov-port-cf2-info-icon">
                         <svg
                           width="20"
@@ -4910,12 +5006,12 @@
                         </svg>
                       </div>
                       <div>
-                        <div class="jov-port-cf2-info-title">Our Location</div>
+                        <div class="jov-port-cf2-info-title">Based In</div>
                         <div class="jov-port-cf2-info-text">
-                          Clarendon Dr, Frisco, TX 75035, United States
+                          Frisco, TX (DFW)
                         </div>
                       </div>
-                    </div> -->
+                    </div>
 
                     <div class="jov-port-cf2-info-item">
                       <div class="jov-port-cf2-info-icon">
@@ -4963,8 +5059,8 @@
                       <div>
                         <div class="jov-port-cf2-info-title">Email Address</div>
                         <div class="jov-port-cf2-info-text">
-                          <a class="poww-num" href="mailto:freaky@gmail.com"
-                            >freaky@gmail.com</a
+                          <a class="poww-num" href="mailto:finibruhpartner@gmail.com"
+                            >finibruhpartner@gmail.com</a
                           >
                         </div>
                       </div>
@@ -4994,6 +5090,31 @@
                       </div>
                     </div>
                   </div>
+
+                  <a
+                    id="jov-port-mediakit-btn"
+                    class="jov-port-cf2-mediakit"
+                    href="assets/Freaky_Finibus_Media_Kit.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    download="Freaky-Finibus-Media-Kit.pdf"
+                  >
+                    Download Media Kit
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="rgb(255,255,255)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M12 3v12" />
+                      <path d="m7 10 5 5 5-5" />
+                      <path d="M5 21h14" />
+                    </svg>
+                  </a>
                 </div>
 
                 <!-- ══ RIGHT: Form panel ══ -->
@@ -5036,7 +5157,7 @@
                     <input
                       type="hidden"
                       name="_subject"
-                      value="New enquiry — Freaky Finibus website"
+                      value="New brand enquiry — Freaky Finibus website"
                     />
                     <input type="hidden" name="_template" value="table" />
                     <input type="hidden" name="_captcha" value="false" />
@@ -5046,7 +5167,9 @@
 
                     <div class="jov-port-cf2-row">
                       <div class="jov-port-cf2-field">
-                        <!-- <label class="jov-port-cf2-label" for="cf2-name">Full Name</label> -->
+                        <label class="jov-port-cf2-label" for="cf2-name"
+                          >Name*</label
+                        >
                         <input
                           class="jov-port-cf2-input"
                           type="text"
@@ -5057,13 +5180,15 @@
                         />
                       </div>
                       <div class="jov-port-cf2-field">
-                        <!-- <label class="jov-port-cf2-label" for="cf2-email">Email</label> -->
+                        <label class="jov-port-cf2-label" for="cf2-company"
+                          >Brand / Company Name*</label
+                        >
                         <input
                           class="jov-port-cf2-input"
-                          type="email"
-                          id="cf2-email"
-                          name="Email"
-                          placeholder="Enter your email"
+                          type="text"
+                          id="cf2-company"
+                          name="Company"
+                          placeholder="Enter your brand or company name"
                           required
                         />
                       </div>
@@ -5071,6 +5196,22 @@
 
                     <div class="jov-port-cf2-row">
                       <div class="jov-port-cf2-field">
+                        <label class="jov-port-cf2-label" for="cf2-email"
+                          >Work Email*</label
+                        >
+                        <input
+                          class="jov-port-cf2-input"
+                          type="email"
+                          id="cf2-email"
+                          name="Email"
+                          placeholder="Enter your work email"
+                          required
+                        />
+                      </div>
+                      <div class="jov-port-cf2-field">
+                        <label class="jov-port-cf2-label" for="cf2-phone"
+                          >Phone (optional)</label
+                        >
                         <input
                           class="jov-port-cf2-input"
                           type="tel"
@@ -5079,7 +5220,6 @@
                           placeholder="Enter your mobile number"
                           inputmode="tel"
                           autocomplete="tel"
-                          required
                         />
 
                         <span
@@ -5089,34 +5229,80 @@
                           Enter a valid mobile number with country code.
                         </span>
                       </div>
+                    </div>
+
+                    <div class="jov-port-cf2-row">
                       <div class="jov-port-cf2-field">
-                        <!-- <label class="jov-port-cf2-label" for="cf2-service">Service Required</label> -->
-                        <input
+                        <label class="jov-port-cf2-label" for="cf2-campaign-type"
+                          >Campaign Type*</label
+                        >
+                        <select
                           class="jov-port-cf2-input"
-                          type="text"
-                          id="cf2-service"
-                          name="Subject"
-                          placeholder="Subject"
+                          id="cf2-campaign-type"
+                          name="Campaign Type"
                           required
-                        />
+                          defaultValue=""
+                        >
+                          <option value="" disabled selected hidden>
+                            Select campaign type
+                          </option>
+                          <option value="Sponsored TikTok">
+                            Sponsored TikTok
+                          </option>
+                          <option value="Instagram Reel">Instagram Reel</option>
+                          <option value="Comedy Campaign">
+                            Comedy Campaign
+                          </option>
+                          <option value="Product Integration">
+                            Product Integration
+                          </option>
+                          <option value="UGC/Paid Ads">UGC/Paid Ads</option>
+                          <option value="Long-Term Partnership">
+                            Long-Term Partnership
+                          </option>
+                          <option value="Event/Activation">
+                            Event/Activation
+                          </option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <div class="jov-port-cf2-field">
+                        <label class="jov-port-cf2-label" for="cf2-budget"
+                          >Estimated Budget</label
+                        >
+                        <select
+                          class="jov-port-cf2-input"
+                          id="cf2-budget"
+                          name="Estimated Budget"
+                        >
+                          <option value="" disabled selected hidden>
+                            Select a budget range
+                          </option>
+                          <option value="$2K-$5K">$2K–$5K</option>
+                          <option value="$5K-$10K">$5K–$10K</option>
+                          <option value="$10K+">$10K+</option>
+                          <option value="Let's Discuss">Let's Discuss</option>
+                        </select>
                       </div>
                     </div>
 
                     <div class="jov-port-cf2-row">
                       <div class="jov-port-cf2-field jov-port-cf2-full">
-                        <!-- <label class="jov-port-cf2-label" for="cf2-message">Your Message</label> -->
+                        <label class="jov-port-cf2-label" for="cf2-message"
+                          >Campaign Details*</label
+                        >
                         <textarea
                           class="jov-port-cf2-textarea"
                           id="cf2-message"
-                          name="Message"
-                          placeholder="Tell me a bit about your project..."
+                          name="Campaign Details"
+                          placeholder="Tell me about the product, objective, timing, deliverables, and anything else relevant..."
                           required
                         ></textarea>
                       </div>
                     </div>
 
                     <button type="submit" class="jov-port-cf2-submit">
-                      Submit
+                      Let's Create Together
                       <svg
                         width="16"
                         height="18"
@@ -5155,8 +5341,69 @@
                 }
 
                 /* =========================================================
-      PHONE VALIDATION
+      MEDIA KIT DOWNLOAD + NEW TAB
+      Clicking the button both opens the PDF in a new tab AND
+      triggers a direct file download in the current tab, at the
+      same time.
+      ========================================================= */
+
+                const mediaKitBtn = document.getElementById(
+                  "jov-port-mediakit-btn",
+                );
+
+                if (mediaKitBtn) {
+                  mediaKitBtn.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    const pdfUrl = mediaKitBtn.getAttribute("href");
+                    const fileName =
+                      mediaKitBtn.getAttribute("download") ||
+                      "Freaky-Finibus-Media-Kit.pdf";
+
+                    /* Open the PDF in a new tab */
+                    window.open(pdfUrl, "_blank", "noopener");
+
+                    /* Also trigger a direct download in the background */
+                    const downloadLink = document.createElement("a");
+                    downloadLink.href = pdfUrl;
+                    downloadLink.download = fileName;
+                    downloadLink.style.display = "none";
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                  });
+                }
+
+                /* =========================================================
+      SELECT PLACEHOLDER COLOR SYNC
+      Campaign Type* and Estimated Budget must show the exact same
+      dimmed placeholder color and the exact same solid text color
+      once a value is picked — regardless of one field being
+      required and the other optional.
+      ========================================================= */
+
+                const cf2Selects = document.querySelectorAll(
+                  "select.jov-port-cf2-input",
+                );
+
+                cf2Selects.forEach(function (select) {
+                  const syncPlaceholderState = function () {
+                    if (select.value === "") {
+                      select.setAttribute("data-placeholder", "1");
+                    } else {
+                      select.removeAttribute("data-placeholder");
+                    }
+                  };
+
+                  syncPlaceholderState();
+                  select.addEventListener("change", syncPlaceholderState);
+                });
+
+                /* =========================================================
+      PHONE VALIDATION (optional field)
       Supports Indian + International Numbers
+      Only validates format if the person actually enters something,
+      since Phone is now an optional field.
       ========================================================= */
 
                 const form = document.querySelector("[data-cf2-form]");
@@ -5192,11 +5439,18 @@
                   });
 
                   /* ---------------------------------------------------------
-        Validate phone before submit
+        Validate phone before submit — only if a value was entered,
+        since Phone is optional.
         --------------------------------------------------------- */
 
                   form.addEventListener("submit", function (e) {
                     const phone = phoneInput.value.trim();
+
+                    if (!phone) {
+                      phoneInput.classList.remove("jov-port-cf2-error");
+                      phoneError.classList.remove("jov-port-cf2-show");
+                      return;
+                    }
 
                     /*
           International phone validation
